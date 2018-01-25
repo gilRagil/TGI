@@ -1,0 +1,394 @@
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="../assets/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link href="../assets/css/simple-sidebar.css" rel="stylesheet">
+    <script src="../assets/bootstrap/3.1.1/jquery.min.js"></script>
+    <script src="../assets/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+    <!-- mulai header -->
+    <div class="header">
+        <nav class="navbar navbar-inverse navbar-fixed-top" style="box-shadow: 0px 2px 5px #BDBDBD;">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#" x>Bootstrap
+                        <strong>Dashboard</strong>
+                    </a>
+                    <a href="#menu-toggle" class="glyphicon glyphicon-menu-hamburger" id="menu-toggle"></a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" id="logout">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="logout">
+                            <span class="glyphicon glyphicon-bell"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="logout">
+                            <span class="glyphicon glyphicon-envelope"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="logout">Logout
+                            <span class="glyphicon glyphicon-log-out"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!-- akhiri header -->
+
+
+    <!-- content -->
+    <div id="wrapper">
+        <!-- mulai sidebar -->
+        <nav id="sidebar-wrapper" class="navbar-fixed-top">
+            <ul class="sidebar-nav">
+                <div class="container">
+                    <li class="sidebar-brand">
+                        <img src="../assets/img/1.jpg" class="img-circle" alt="Cinque Terre">
+                        <p class="devi">
+                            <strong>Devi Aprilia</strong>
+                        </p>
+                        <p class="pelajar">Pelajar</p>
+                    </li>
+                </div>
+                <p class="main">MAIN</p>
+                <li class="active">
+                    <a href="../index.html">
+                        <p class="dashboard">
+                            <span class="glyphicon glyphicon-home"></span> Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse">
+                        <p class="master">
+                            <span class=" glyphicon glyphicon-book"></span> Master
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </p>
+                    </a>
+                    <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+                        <li>
+                            <a href="produk.html">
+                                <p style="padding:0px 0px 0px 35px;">Produk</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="supplier.html">
+                                <p style="padding:0px 0px 0px 35px;">Suplier</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="admin.html">
+                                <p style="padding:0px 0px 0px 35px;">Admin</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#transaksi" aria-expanded="false" data-toggle="collapse">
+                        <p class="master">
+                            <span class=" glyphicon glyphicon-book"></span> Transaksi
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </p>
+                    </a>
+                    <ul id="transaksi" class="collapse list-unstyled ">
+                        <li>
+                            <a href="pembelian.html">
+                                <p style="padding:0px 0px 0px 35px;">Pembelian</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="penjualan.html">
+                                <p style="padding:0px 0px 0px 35px;">Penjualan</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <!-- akhiri sidebar -->
+
+
+
+        <!-- mulai page content -->
+        <div>
+            <div class="page-dashboard">
+                <a class="btn btn-info btn-lg" id="button-dashboard">
+                    <span class="glyphicon glyphicon-th-list"></span>
+                </a>
+                <p class="dashboard-content">
+                    <strong>Data Suplier</strong>
+                </p>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#">Master</a>
+                    </li>
+                    <li style="color:#aaaaaa">Supplier</li>
+                </ul>
+            </div>
+
+            <!-- mulai page tambah data -->
+            <div class="container-fluid" id="page-tambah">
+                <div>
+                    <button type="button" class="btn btn-info" id="button-tambah">Tambah</button>
+                </div>
+
+
+                <!-- mulai form input -->
+                <div class="col-md-12">
+                    <div class="panel panel-default" id="page-input">
+                        <div class="panel-heading">
+                            <h4>Form Input</h4>
+                        </div>
+                        <div class="panel-body" id="col1">
+                            <div class="col-md-2"> Nama Suplier *</div>
+                            <div class="col-md-10">
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body" id="col1">
+                            <div class="col-md-2"> Fax *</div>
+                            <div class="col-md-10">
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body" id="col1">
+                            <div class="col-md-2"> No Telp *</div>
+                            <div class="col-md-10">
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body" id="col1">
+                            <div class="col-md-2"> Email *</div>
+                            <div class="col-md-10">
+                                <div class="col-sm-4">
+                                    <input type="email" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body" id="col2">
+                            <div class="col-md-2"> Alamat *</div>
+                            <div class="col-md-10">
+                                <div class="col-sm-4">
+                                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body" id="col-sc">
+                            <button type="button" class="btn btn-info" id="button-save">Save</button>
+                            <button type="button" class="btn" id="button-cancel">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- akhiri form input -->
+
+                <!-- mulai tabel -->
+                <div class="container-fluid" id="app">
+                    <div class="card" style="margin-top:10px;">
+                        <div class="card-body">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr style="background-color:white;">
+                                        <th>id</th>
+                                        <th>Supplier name</th>
+                                        <th>Address</th>
+                                        <th>Phone</th>
+                                        <th>Del</th>
+                                        <th>Create time</th>
+                                        <th>Update time</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="item in sliced">
+                                        <th>{{item.supplier_id}}</th>
+                                        <td>{{item.supplier_name}}</td>
+                                        <td>{{item.supplier_address}}</td>
+                                        <td>@mdo</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                        <td>
+                                            <button type="button" class="btn btn-info " data-toggle="modal" data-target="#view">
+                                                <span class="glyphicon glyphicon-eye-open"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-warning" data-toggle="modal" id="button-edit">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- akhiri tabel -->
+
+            </div>
+            <!-- akhiri page tambah -->
+
+        </div>
+        <!-- akhiri page content -->
+
+    </div>
+    <!-- akhiri content -->
+
+
+    <!-- mulai modal view -->
+    <div class="modal fade" id="view" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">
+                        <strong>View</strong>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <p class="content-modal">Nama Produk :</p>
+                    <p class="content-modal">Barcode :</p>
+                    <p class="content-modal">Harga :</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- akhiri modal view -->
+
+
+    <!-- mulai modal delete -->
+    <div class="modal fade" id="delete" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">
+                        <strong>Delete</strong>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <p class="content-modal">Are you sure ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn" id="button-cancel">Cancel</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-info" id="button-yes">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- akhiri modal delete -->
+
+    <!-- Menu Toggle Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.3/axios.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                show: false, // display content after API request
+                offset: 1, // items to display after scroll
+                display: 10, // initial items
+                trigger: 10, // how far from the bottom to trigger infinite scroll
+                items: [], // server response data
+                end: false, // no more resources
+            },
+            computed: {
+                // slice the array of data to display
+                sliced() {
+                    return this.items.slice(0, this.display);
+                },
+            },
+            methods: {
+                // check to see if we're at the bottom of the page
+                scroll() {
+                    window.onscroll = ev => {
+                        if (
+                            window.innerHeight + window.scrollY >=
+                            (document.body.offsetHeight - this.trigger)
+                        ) {
+                            if (this.display < this.items.length) {
+                                this.display = this.display + this.offset;
+                            } else {
+                                this.end = true;
+                            }
+                        }
+                    };
+                },
+                // preform API request to the server
+                fetch() {
+                    window.setTimeout(() => {
+                        // example response data
+                        axios.get('../server/ajax.php?act=selectDataSupp').then(response => this.items =
+                            response.data);
+                        this.show = true;
+                    }, 0);
+                }
+            },
+            mounted() {
+                // track scroll event
+                this.scroll();
+            },
+            created() {
+                // get the data by performing API request
+                this.fetch();
+            }
+        });
+    </script>
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+
+        $(document).ready(function () {
+            $("#page-input").hide();
+            $("#button-tambah").click(function () {
+                $("#page-input").slideToggle("slow");
+                $("#button-tambah").hide();
+            });
+            $("#button-save").click(function () {
+                $("#page-input").hide("slow");
+                $("#button-tambah").show();
+            });
+            $("#button-cancel").click(function () {
+                $("#page-input").slideToggle("slow");
+                $("#button-tambah").show();
+            });
+
+            $("#button-edit").click(function () {
+                $("#page-input").slideToggle("slow");
+            });
+        });
+    </script>
+    <!-- akhiri Menu Toggle Script -->
+
+</body>
+
+</html>
