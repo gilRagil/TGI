@@ -10,7 +10,38 @@
     else $xid = $_GET['xid'];
 
     switch ($act) {
-        // supplier 
+        case 'selectLevel':
+            $sql = "SELECT level_id, level_name FROM level";
+            $row = $objCtrl->GetGlobalFilter($sql);
+            echo json_encode($row);
+            break;
+        case 'selectEmployee':
+             $sql = "SELECT * FROM employees order by employees_id desc";
+            $row = $objCtrl->GetGlobalFilter($sql);
+            echo json_encode($row);
+            break;
+        case 'insertEmployee':
+            $objCtrl->insert('employees',array(
+                'employees_id' => $objCtrl->getGlobalID('EMP','employees_id','employees'), 
+                'full_name' => $_GET['full_name'], 
+                'photo' => $_GET['photo'], 
+                'gender' => $_GET['gender'], 
+                'religion' => $_GET['religion'], 
+                'nik' => $_GET['nik'], 
+                'address' => $_GET['address'], 
+                'level' => $_GET['level'], 
+                'contract_start_date' => $_GET['contract_start_date'], 
+                'mobile_phone' => $_GET['mobile_phone'], 
+                'email_office' => $_GET['email_office'], 
+                'email_personal' => $_GET['email_personal'], 
+                'entry_by' => $_SESSION['employees_id'], 
+                'entry_date' => $_GET['entry_date']
+            ));
+            // echo '[{"employees_id":"EMP0128","full_name":"Ntabs","photo":"","gender":"","religion":"","nik":"","address":"","level":"","contract_start_date":"0000-00-00","mobile_phone":"","email_office":"","email_personal":"","entry_by":"","entry_date":"0000-00-00 00:00:00","update_by":"","update_date":"0000-00-00 00:00:00"}]';
+            $sql = "SELECT * FROM employees order by employees_id desc";
+            $row = $objCtrl->GetGlobalFilter($sql);
+            echo json_encode($row);
+            break;
         case 'selectDataSupp':
             $sql = "SELECT * FROM supplier";
             $row = $objCtrl->GetGlobalFilter($sql);
