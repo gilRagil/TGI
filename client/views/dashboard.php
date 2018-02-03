@@ -1,136 +1,7 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Bootstrap Material Admin by Bootstrapious.com</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="all,follow">
-  <!-- Bootstrap CSS-->
-  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-  <!-- Font Awesome CSS-->
-  <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.css">
-  <!-- Google fonts - Poppins -->
-  <link rel="stylesheet" href="css/font.css">
-  <!-- theme stylesheet-->
-  <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
-  <link rel="stylesheet" href="css/custom.css">
-  <!-- Favicon-->
-  <link rel="shortcut icon" href="img/logo.jpeg">
-
-</head>
-
-<body>
-  <div class="page">
-
-    <!-- Main Navbar-->
-    <header class="header">
-      <nav class="navbar">
-        <!-- Search Box-->
-        <div class="search-box">
-          <button class="dismiss">
-            <i class="icon-close"></i>
-          </button>
-          <form id="searchForm" action="#" role="search">
-            <input type="search" placeholder="What are you looking for..." class="form-control">
-          </form>
-        </div>
-        <div class="container-fluid">
-          <div class="navbar-holder d-flex align-items-center justify-content-between">
-            <!-- Navbar Header-->
-            <div class="navbar-header">
-              <!-- Navbar Brand -->
-              <a href="index.html" class="navbar-brand">
-                <div class="brand-text brand-big">
-                  <strong>TG I</strong>
-                  <span>NOAC</span>
-                </div>
-                <div class="brand-text brand-small">
-                  <strong>TGI</strong>
-                </div>
-              </a>
-              <!-- Toggle Button-->
-              <a id="toggle-btn" href="#" class="menu-btn active">
-                <span></span>
-                <span></span>
-                <span></span>
-              </a>
-            </div>
-            <!-- Navbar Menu -->
-            <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
-              <!-- Logout    -->
-              <li class="nav-item">
-                <a href="login.html" class="nav-link logout">Logout
-                  <i class="fa fa-sign-out"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <div class="page-content d-flex align-items-stretch">
-      <!-- Side Navbar -->
-      <nav class="side-navbar">
-        <!-- Sidebar Header-->
-        <div class="sidebar-header d-flex align-items-center">
-          <div class="avatar">
-            <img src="img/pp.jpg" alt="..." class="img-fluid rounded-circle">
-          </div>
-          <div class="title">
-            <h1 class="h4">Arif Ragil</h1>
-            <p>Software Developer</p>
-          </div>
-        </div>
-        <!-- Sidebar Navidation Menus-->
-        <span class="heading">Main</span>
-        <ul class="list-unstyled">
-          <li class="active">
-            <a href="index.html">
-              <i class="icon-home"></i>Dashboard </a>
-          </li>
-          <li>
-            <a href="#masterDropdown" aria-expanded="false" data-toggle="collapse">
-                <i class="icon-gears"></i>Master </a>
-              <ul id="masterDropdown" class="collapse list-unstyled ">
-                <li>
-                  <a href="produk.html">Produk</a>
-                </li>
-                <li>
-                  <a href="#">Page</a>
-                </li>
-                <li>
-                  <a href="#">Page</a>
-                </li>
-              </ul>
-          </li>
-          <li>
-            <a href="login.html">
-              <i class="icon-interface-windows"></i>Login page </a>
-          </li>
-        </ul>
-        <span class="heading">Extras</span>
-        <ul class="list-unstyled">
-          <li>
-            <a href="#">
-              <i class="icon-flask"></i>Demo </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="icon-screen"></i>Demo </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="icon-mail"></i>Demo </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="icon-picture"></i>Demo </a>
-          </li>
-        </ul>
-      </nav>
+<?php 
+  include "header.php";
+  include "leftmenu.php";
+?>
       <div class="content-inner">
         <!-- Page Header-->
         <header class="page-header">
@@ -145,7 +16,7 @@
               <div class=" col-lg-3 col-12">
                 <div class="statistic d-flex align-items-center bg-white has-shadow">
                   <div class="icon">
-                    <img src="img/icon_customer/toyota.png" alt="..." class="img-fluid rounded-circle">
+                    <img src="../img/icon_customer/toyota.png" alt="..." class="img-fluid rounded-circle">
                   </div>
                   <div class="text">
                     <strong>234</strong>
@@ -157,7 +28,7 @@
               <div class=" col-lg-3 col-12">
                 <div class="statistic d-flex align-items-center bg-white has-shadow">
                   <div class="icon">
-                    <img src="img/icon_customer/toyota.png" alt="..." class="img-fluid rounded-circle">
+                    <img src="../img/icon_customer/toyota.png" alt="..." class="img-fluid rounded-circle">
                   </div>
                   <div class="text">
                     <strong>234</strong>
@@ -169,7 +40,7 @@
               <div class=" col-lg-3 col-12">
                 <div class="statistic d-flex align-items-center bg-white has-shadow">
                   <div class="icon">
-                    <img src="img/icon_customer/toyota.png" alt="..." class="img-fluid rounded-circle">
+                    <img src="../img/icon_customer/toyota.png" alt="..." class="img-fluid rounded-circle">
                   </div>
                   <div class="text">
                     <strong>234</strong>
@@ -181,7 +52,7 @@
               <div class=" col-lg-3 col-12">
                 <div class="statistic d-flex align-items-center bg-white has-shadow">
                   <div class="icon">
-                    <img src="img/icon_customer/toyota.png" alt="..." class="img-fluid rounded-circle">
+                    <img src="../img/icon_customer/toyota.png" alt="..." class="img-fluid rounded-circle">
                   </div>
                   <div class="text">
                     <strong>234</strong>
@@ -195,7 +66,7 @@
               <div class=" col-lg-3 col-12">
                 <div class="statistic d-flex align-items-center bg-white has-shadow">
                   <div class="icon">
-                    <img src="img/icon_customer/toyota.png" alt="..." class="img-fluid rounded-circle">
+                    <img src="../img/icon_customer/toyota.png" alt="..." class="img-fluid rounded-circle">
                   </div>
                   <div class="text">
                     <strong>234</strong>
@@ -207,7 +78,7 @@
               <div class=" col-lg-3 col-12">
                 <div class="statistic d-flex align-items-center bg-white has-shadow">
                   <div class="icon">
-                    <img src="img/icon_customer/toyota.png" alt="..." class="img-fluid rounded-circle">
+                    <img src="../img/icon_customer/toyota.png" alt="..." class="img-fluid rounded-circle">
                   </div>
                   <div class="text">
                     <strong>234</strong>
@@ -219,7 +90,7 @@
               <div class=" col-lg-3 col-12">
                 <div class="statistic d-flex align-items-center bg-white has-shadow">
                   <div class="icon">
-                    <img src="img/icon_customer/toyota.png" alt="..." class="img-fluid rounded-circle">
+                    <img src="../img/icon_customer/toyota.png" alt="..." class="img-fluid rounded-circle">
                   </div>
                   <div class="text">
                     <strong>234</strong>
@@ -231,7 +102,7 @@
               <div class=" col-lg-3 col-12">
                 <div class="statistic d-flex align-items-center bg-white has-shadow">
                   <div class="icon">
-                    <img src="img/icon_customer/toyota.png" alt="..." class="img-fluid rounded-circle">
+                    <img src="../img/icon_customer/toyota.png" alt="..." class="img-fluid rounded-circle">
                   </div>
                   <div class="text">
                     <strong>234</strong>
@@ -413,7 +284,7 @@
                       <div class="feed d-flex justify-content-between">
                         <div class="feed-body d-flex justify-content-between">
                           <a href="#" class="feed-profile">
-                            <img src="img/avatar-5.jpg" alt="person" class="img-fluid rounded-circle">
+                            <img src="../img/avatar-5.jpg" alt="person" class="img-fluid rounded-circle">
                           </a>
                           <div class="content">
                             <h5>Aria Smith</h5>
@@ -433,7 +304,7 @@
                       <div class="feed d-flex justify-content-between">
                         <div class="feed-body d-flex justify-content-between">
                           <a href="#" class="feed-profile">
-                            <img src="img/avatar-2.jpg" alt="person" class="img-fluid rounded-circle">
+                            <img src="../img/avatar-2.jpg" alt="person" class="img-fluid rounded-circle">
                           </a>
                           <div class="content">
                             <h5>Frank Williams</h5>
@@ -459,7 +330,7 @@
                       <div class="feed d-flex justify-content-between">
                         <div class="feed-body d-flex justify-content-between">
                           <a href="#" class="feed-profile">
-                            <img src="img/avatar-3.jpg" alt="person" class="img-fluid rounded-circle">
+                            <img src="../img/avatar-3.jpg" alt="person" class="img-fluid rounded-circle">
                           </a>
                           <div class="content">
                             <h5>Ashley Wood</h5>
@@ -555,18 +426,15 @@
     </div>
   </div>
   <!-- Javascript files-->
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="vendor/popper.js/umd/popper.min.js"> </script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
-  <script src="vendor/chart.js/Chart.min.js"></script>
-  <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
-  <script src="js/charts-home.js"></script>
+  <script src="../js/jquery-3.2.1.min.js"></script>
+  <script src="../vendor/popper.js/umd/popper.min.js"> </script>
+  <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../vendor/jquery.cookie/jquery.cookie.js"> </script>
+  <!-- <script src="../vendor/chart.js/Chart.min.js"></script> -->
+  <script src="../vendor/jquery-validation/jquery.validate.min.js"></script>
+  <!-- <script src="../js/charts-home.js"></script> -->
   <!-- Main File-->
-  <script src="js/front.js"></script>
-  <script>
-    w3.includeHTML();
-  </script>
+  <script src="../js/front.js"></script>
 </body>
 
 </html>

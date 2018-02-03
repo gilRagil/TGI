@@ -1,138 +1,8 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>INOAC ARPHI</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="all,follow">
-    <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="../vendor/font-awesome/css/font-awesome.css">
-    <!-- Google fonts - Poppins -->
-    <link rel="stylesheet" href="../css/font.css">
-    <!-- theme stylesheet-->
-    <link rel="stylesheet" href="../css/style.default.premium.css" id="theme-stylesheet">
-    <link rel="stylesheet" href="../css/sweetalert.css">
-    <link rel="stylesheet" href="../css/custom.css">
-    <!-- Favicon-->
-    <link rel="shortcut icon" href="../img/logo.jpeg">
-
-</head>
-
-<body>
-    <div class="page" id="app">
-
-        <!-- Main Navbar-->
-        <header class="header">
-            <nav class="navbar">
-                <!-- Search Box-->
-                <div class="search-box">
-                    <button class="dismiss">
-                        <i class="icon-close"></i>
-                    </button>
-                    <form id="searchForm" action="#" role="search">
-                        <input type="search" placeholder="What are you looking for..." class="form-control">
-                    </form>
-                </div>
-                <div class="container-fluid">
-                    <div class="navbar-holder d-flex align-items-center justify-content-between">
-                        <!-- Navbar Header-->
-                        <div class="navbar-header">
-                            <!-- Navbar Brand -->
-                            <a href="index.html" class="navbar-brand">
-                                <div class="brand-text brand-big">
-                                    <strong>TG I</strong>
-                                    <span>NOAC</span>
-                                </div>
-                                <div class="brand-text brand-small">
-                                    <strong>TGI</strong>
-                                </div>
-                            </a>
-                            <!-- Toggle Button-->
-                            <a id="toggle-btn" href="#" class="menu-btn active">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </a>
-                        </div>
-                        <!-- Navbar Menu -->
-                        <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
-                            <!-- Logout    -->
-                            <li class="nav-item">
-                                <a href="login.html" class="nav-link logout">Logout
-                                    <i class="fa fa-sign-out"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
-        <div class="page-content d-flex align-items-stretch">
-            <!-- Side Navbar -->
-            <nav class="side-navbar">
-                <!-- Sidebar Header-->
-                <div class="sidebar-header d-flex align-items-center">
-                    <div class="avatar">
-                        <img v-bind:src="photo" class="img-fluid rounded-circle">
-                    </div>
-                    <div class="title">
-                        <h1 class="h4">{{ sidebar_full_name }}</h1>
-                        <p>{{ level_name }}</p>
-                    </div>
-                </div>
-                <!-- Sidebar Navidation Menus-->
-                <span class="heading">Main</span>
-                <ul class="list-unstyled">
-                    <li class="active">
-                        <a href="index.html">
-                            <i class="icon-home"></i>Dashboard </a>
-                    </li>
-                    <li>
-                        <a href="#masterDropdown" aria-expanded="false" data-toggle="collapse">
-                            <i class="icon-gears"></i>Master </a>
-                        <ul id="masterDropdown" class="collapse list-unstyled ">
-                            <li>
-                                <a href="produk.html">Produk</a>
-                            </li>
-                            <li>
-                                <a href="#">Page</a>
-                            </li>
-                            <li>
-                                <a href="#">Page</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li v-for="(header, index) in menu_header_name">
-                        <a :href="'#' + header" aria-expanded="false" data-toggle="collapse">
-                            <i v-bind:class="icon-file"></i>{{ header[1]}} </a>
-                    </li>
-                    <li>
-                        <a href="#jobDropdown" aria-expanded="false" data-toggle="collapse">
-                            <i class="icon-file"></i>JOB </a>
-                        <ul id="jobDropdown" class="collapse list-unstyled" v-for=''>
-                            <li>
-                                <a href="employees.html">unch</a>
-                            </li>
-                            <li>
-                                <a href="#">Page</a>
-                            </li>
-                            <li>
-                                <a href="#">Page</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="login.html">
-                            <i class="icon-interface-windows"></i>Login page </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="content-inner">
+<?php 
+    include "header.php";
+    include "leftmenu.php";
+?>
+            <div class="content-inner" id="app">
                 <!-- Page Header-->
                 <header class="page-header">
                     <div class="container-fluid">
@@ -384,13 +254,13 @@
                 handleIdentity() {
                     axios.get('../../server/ajax.php?act=handleIdentity')
                         .then(response => {
-                            this.sidebar_full_name = response.data.full_name,
+                                this.sidebar_full_name = response.data.full_name,
                                 this.level_name = response.data.level_name,
                                 this.photo = '../img/employee_photo/' + response.data.photo,
                                 console.log(response.data.photo)
                         })
                         .catch(function (error) {
-                            window.location.href = 'login.html'
+                            // window.location.href = 'login.html'
                         });
                 },
                 handleLeftmenu() {
@@ -399,7 +269,7 @@
                                 console.log(response.data.menu_header_name)
                         })
                         .catch(function (error) {
-                            window.location.href = 'login.html'
+                            // window.location.href = 'login.html'
                         });
                 },
                 scroll() {
