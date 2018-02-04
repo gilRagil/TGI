@@ -53,7 +53,8 @@ class Database {
 		       $arReturn[] = $row;
 		    }
 			mysqli_free_result($hRes);
-		    return $arReturn;
+				return $arReturn;
+				mysqli_close($this->hConn);
 
 	   }
 	   

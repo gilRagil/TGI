@@ -179,7 +179,6 @@
                     }); 
                 },
                 search: function (event) {
-                    console.log('Test2');
                     window.setTimeout(() => {
                         // example response data
                         let paramsSearch = document.getElementById('paramsSearch').value;
@@ -189,7 +188,6 @@
                             response.data);
                         this.show = true;
                     }, 0);
-                    console.log('Test');
                 },
                 winpopup(level_id){
                     var win_items;

@@ -60,22 +60,29 @@
             $row = $objCtrl->GetGlobalFilter($sql);
             echo json_encode($row);
             break;
-
+        //Employee
         case 'selectEmployee':
-            $sql = "SELECT * FROM employees order by employees_id desc";
+            $sql = "SELECT e.*, l.level_name FROM employees e, level l WHERE e.level_id = l.level_id ";
+            if($paramsSearch != ""){ 
+                $sql.="  AND e.nik LIKE '%".$paramsSearch."%' or nama LIKE '%".$paramsSearch."%' or level_name LIKE '%".$paramsSearch."%'";
+            }
+            $sql.= " order by employees_id desc";
             $row = $objCtrl->GetGlobalFilter($sql);
             echo json_encode($row);
+            mysqli_close($con);
             break;
         case 'insertEmployee':
             $objCtrl->insert('employees',array(
                 'employees_id' => $objCtrl->getGlobalID('EMP','employees_id','employees'), 
                 'full_name' => $_GET['full_name'], 
+                'username' => $_GET['username'], 
+                'password' => password_hash($_GET['password'], PASSWORD_DEFAULT),
                 'photo' => $_GET['photo'], 
                 'gender' => $_GET['gender'], 
                 'religion' => $_GET['religion'], 
                 'nik' => $_GET['nik'], 
                 'address' => $_GET['address'], 
-                'level' => $_GET['level'], 
+                'level_id' => $_GET['level_id'], 
                 'contract_start_date' => $_GET['contract_start_date'], 
                 'mobile_phone' => $_GET['mobile_phone'], 
                 'email_office' => $_GET['email_office'], 
@@ -83,10 +90,39 @@
                 'entry_by' => $_SESSION['employees_id'], 
                 'entry_date' => $_GET['entry_date']
             ));
-            $sql = "SELECT * FROM employees order by employees_id desc";
+            $sql = "SELECT e.*, l.level_name FROM employees e, level l WHERE e.level_id = l.level_id  order by employees_id desc";
             $row = $objCtrl->GetGlobalFilter($sql);
             echo json_encode($row);
             break;
+        case 'editEmployee':
+            $max_id = $objCtrl->getGlobalID('EMP','employees_id','employees');
+            $objCtrl->update('employees',array(
+                'employees_id' => $max_id, 
+                'full_name' => $_GET['full_name'], 
+                'username' => $_GET['username'], 
+                'photo' => $_GET['photo'], 
+                'gender' => $_GET['gender'], 
+                'religion' => $_GET['religion'], 
+                'nik' => $_GET['nik'], 
+                'address' => $_GET['address'], 
+                'level_id' => $_GET['level_id'], 
+                'contract_start_date' => $_GET['contract_start_date'], 
+                'mobile_phone' => $_GET['mobile_phone'], 
+                'email_office' => $_GET['email_office'], 
+                'email_personal' => $_GET['email_personal'], 
+                'entry_by' => $_SESSION['employees_id'], 
+                'entry_date' => $_GET['entry_date']
+            ),array('employees_id' => $_GET['xid']));
+            if($_GET['password'] !=""){
+                $objCtrl->update('employees',array(
+                    'password' => password_hash($_GET['password'], PASSWORD_DEFAULT)
+                ),array('employees_id' => $max_id));
+            }
+            $sql = "SELECT e.*, l.level_name FROM employees e, level l WHERE e.level_id = l.level_id  order by employees_id desc";
+            $row = $objCtrl->GetGlobalFilter($sql);
+            echo json_encode($row);
+            break;
+        //Supplier
         case 'selectDataSupp':
             $sql = "SELECT * FROM supplier";
             if($paramsSearch != ""){ 
@@ -109,6 +145,7 @@
                 'update_time' => $_POST['telepon_customer']
             ));
             break;
+        //Item
         case 'selectItem':
             $sql="SELECT concat(kode_customer, nama_customer, alamat_customer) as name FROM customer WHERE id<='".$_POST['id1']."' id<='".$_POST['id2']."'";
             $row = $objCtrl->getName($sql);
@@ -132,6 +169,15 @@
             $objCtrl->delete($table, array(
                 $primary_id => $id
             ));
+            break;
+        ////View/////
+        case 'ViewEvent':
+            $table = $_GET['table'];
+            $primary_id = $_GET['primary_id'];
+            $id = $_GET['id'];
+            $sql = "SELECT * FROM $table WHERE $primary_id = '".$id."'";
+            $row = $objCtrl->GetGlobalFilter($sql);
+            echo json_encode($row);
             break;
     	default:
     		# code...

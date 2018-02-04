@@ -6,7 +6,7 @@
                 <!-- Page Header-->
                 <header class="page-header">
                     <div class="container-fluid">
-                        <h2 class="no-margin-bottom">Master Product</h2>
+                        <h2 class="no-margin-bottom">Master Employees</h2>
                     </div>
                 </header>
                 <!-- Dashboard Cards Section -->
@@ -18,16 +18,15 @@
                                 <div class="col-lg-9">
                                     <form class="form-inline">
                                         <div class="form-group">
-                                            <label for="inlineFormInput" class="sr-only">Search</label>
-                                            <input id="inlineFormInput" type="text" placeholder="Search" class="mr-3 form-control">
+                                            <input id="paramsSearch" type="text" placeholder="Search" class="mr-3 form-control">
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-primary">
+                                            <button type="submit" class="btn btn-primary" v-on:click="search">
                                                 <i class="icon-search"></i>
                                             </button>
                                         </div>&nbsp;
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myMaster">
+                                            <button type="button" @click="act = 'add'" class="btn btn-info" data-toggle="modal" data-target="#myMaster">
                                                 <i title="Add Product" class="icon-plus"></i>
                                             </button>
                                         </div>
@@ -44,11 +43,21 @@
                                                 <span aria-hidden="true">×</span>
                                             </button>
                                         </div>
+                                        <small class="help-block-none" style="color:red" v-for="error in errors">{{ error }}</small>
                                         <div class="modal-body">
-                                            <form>
+                                            <form name="frm-trans" name="frm-trans">
+                                                                                     
                                                 <div class="form-group">
                                                     <label>Nama Lengkap</label>
-                                                    <input type="text" v-model="full_name" class="form-control">
+                                                    <input type="text" v-model="full_name" class="form-control" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Username</label>
+                                                    <input type="text" v-model="username" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Password</label>
+                                                    <input type="password" v-model="password" class="form-control">
                                                 </div>
                                                 <div class="form-group" v-if="!image">
                                                     <label>Photo</label>
@@ -62,10 +71,10 @@
                                                     <label>Gender</label>
                                                     <div class="col-sm-9">
                                                         <div>
-                                                            <input id="optionsRadios1" type="radio" checked="" value="Laki Laki" v-model="gender">
+                                                            <input id="optionsRadios1" type="radio" checked="" value="L" v-model="gender">
                                                             <label for="optionsRadios1">Laki Laki</label>
                                                             &nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <input id="optionsRadios2" type="radio" value="Perempuan" v-model="gender">
+                                                            <input id="optionsRadios2" type="radio" value="P" v-model="gender">
                                                             <label for="optionsRadios2">Perempuan</label>
                                                         </div>
                                                     </div>
@@ -84,7 +93,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Level Position</label>
-                                                    <select v-model="level" class="form-control">
+                                                    <select v-model="level_id" class="form-control">
                                                         <option v-for="level in levels" v-bind:value="level.level_id">
                                                             {{ level.level_name }}
                                                         </option>
@@ -113,13 +122,15 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Email Personal</label>
-                                                    <input type="text" v-model="email_office" class="form-control">
+                                                    <input type="text" v-model="email_personal" class="form-control">
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
+                                            <input type="hidden" v-model="xid" class="form-control">
                                             <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                                            <button type="button" class="btn btn-primary" v-on:click="handleInsertData">Save changes</button>
+                                            <button type="button" class="btn btn-primary" v-if="act == 'add'" v-on:click="handleData">Save</button>
+                                            <button type="button" class="btn btn-primary" v-if="act == 'edit'" v-on:click="handleData">Save</button>
                                         </div>
                                     </div>
                                 </div>
@@ -131,9 +142,11 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th width="10%">NIK</th>
-                                                <th width="30%">Nama Lengkap</th>
-                                                <th width="20%">Level</th>
-                                                <th width="20%">Action</th>
+                                                <th width="20%">Nama Lengkap</th>
+                                                <th width="10%">Level</th>
+                                                <th width="10%">No Hp</th>
+                                                <th width="25%">Alamat</th>
+                                                <th width="15%">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -141,15 +154,17 @@
                                                 <th scope="row">{{ index+1 }}</th>
                                                 <td>{{employee.nik}}</td>
                                                 <td>{{employee.full_name}}</td>
-                                                <td>{{employee.level}}</td>
+                                                <td>{{employee.level_name}}</td>
+                                                <td>{{employee.mobile_phone}}</td>
+                                                <td>{{employee.address}}</td>
                                                 <td>
-                                                    <button class="btn btn-primary">
+                                                    <button class="btn btn-primary"  v-if="view == 1"  data-toggle="modal" data-target="#myMaster" v-on:click="action('view',employee.employees_id)">
                                                         <i class="icon-eye-open"></i>
                                                     </button>
-                                                    <button class="btn btn-warning">
+                                                    <button class="btn btn-warning" v-if="edit == 1"  data-toggle="modal" data-target="#myMaster" v-on:click="action('edit',employee.employees_id)">
                                                         <i class="icon-pencil"></i>
                                                     </button>
-                                                    <button class="btn btn-danger">
+                                                    <button class="btn btn-danger"  v-if="del == 1"  v-on:click="removeRow(employee)">
                                                         <i class="icon-trash"></i>
                                                     </button>
                                                 </td>
@@ -193,21 +208,10 @@
     <script type="text/javascript" src="../js/vue.js"></script>
     <script src="../js/sweetalert.min.js"></script>
     <script>
-        // Vue.http.options.emulateJSON = true; // send as 
-        var playlists =  {
-            "Favourite Songs": {
-                "2014": ['song a', 'song b'],
-                "2013": ['song c', 'song d', 'song e']
-            },
-            "Favourite Genres": {
-                "Pop": ['song a'],
-                "Rock": ['song b'],
-                "Hip Hop": ['song c', 'song d', 'song e']
-            }
-        }
         var app = new Vue({
             el: '#app',
             data: {
+                errors:[],
                 show: false, // display content after API request
                 offset: 1, // items to display after scroll
                 display: 10, // initial items
@@ -217,8 +221,10 @@
                 levels: [],
                 image: '',
                 full_name: '',
+                username: '',
+                password: '',
                 gender: '',
-                level: '',
+                level_id: '',
                 nik: '',
                 address: '',
                 contract_start_date: '',
@@ -226,13 +232,11 @@
                 mobile_phone: '',
                 email_office: '',
                 email_personal: '',
-                //header
-                sidebar_full_name: 'GIL',
-                level_name: '',
-                photo: '../img/employee_photo/pp.jpg',
-                menu_header_name:[],
-                //headerMenu
-
+                act : '',
+                view:0,
+                del:0,
+                del:0,
+                xid: '' //parameter untuk edit
             },
             computed: {
                 // slice the array of data to display
@@ -241,36 +245,65 @@
                 },
             },
             mounted() {
-                this.handleIdentity();
-                this.handleLeftmenu();
                 this.scroll();
                 axios.get('../../server/ajax.php?act=selectLevel').then(response => this.levels = response.data);
+                axios.get('../../server/ajax.php?act=cekMenu&id=3').then(response => {
+                    this.view = response.data[0].view,
+                    this.edit = response.data[0].edit,
+                    this.del = response.data[0].del
+                })
             },
             created() {
                 // get the data by performing API request
                 this.fetch();
             },
             methods: {
-                handleIdentity() {
-                    axios.get('../../server/ajax.php?act=handleIdentity')
-                        .then(response => {
-                                this.sidebar_full_name = response.data.full_name,
-                                this.level_name = response.data.level_name,
-                                this.photo = '../img/employee_photo/' + response.data.photo,
-                                console.log(response.data.photo)
-                        })
-                        .catch(function (error) {
-                            // window.location.href = 'login.html'
+                removeRow: function(employee) {
+                    swal({
+                        title: "Apakah anda yakin?",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                    if (willDelete) {
+                        axios.get('../../server/ajax.php?act=DeleteEvent&table=employees&primary_id=employees_id&id='+employee.employees_id).then(
+                        this.employees.splice(this.employees.indexOf(employee), 1)
+                    );
+                        swal("Hapus Berhasil", {
+                        icon: "success",
                         });
+                    } else {
+                        swal("Penghapusan dibatalkan!");
+                    }
+                    }); 
                 },
-                handleLeftmenu() {
-                    axios.get('../../server/ajax.php?act=handleLeftmenu')
-                        .then(response => {this.menu_header_name = response.data.menu_header_name,
-                                console.log(response.data.menu_header_name)
-                        })
-                        .catch(function (error) {
-                            // window.location.href = 'login.html'
-                        });
+                action(act,id){
+                    this.act = act;
+                    axios.get('../../server/ajax.php?act=ViewEvent&table=employees&primary_id=employees_id&id=' +
+                    id).then(
+                    response =>{
+                        this.full_name = response.data[0].full_name,
+                        this.username= response.data[0].username,
+                        this.gender= response.data[0].gender,
+                        this.level_id= response.data[0].level_id,
+                        this.nik= response.data[0].nik,
+                        this.address= response.data[0].address,
+                        this.contract_start_date= response.data[0].contract_start_date,
+                        this.religion= response.data[0].religion,
+                        this.mobile_phone= response.data[0].mobile_phone,
+                        this.email_office= response.data[0].email_office,
+                        this.xid = id
+                    });
+                },
+                search: function (event) {
+                    window.setTimeout(() => {
+                        axios.get('../../server/ajax.php?act=view&paramsSearch=' +
+                            paramsSearch).then(
+                            response => this.list =
+                            response.data);
+                        this.show = true;
+                    }, 0);
                 },
                 scroll() {
                     window.onscroll = ev => {
@@ -311,21 +344,41 @@
                     };
                     reader.readAsDataURL(file);
                 },
-                handleInsertData: function () {
-                    let parameter = 'act=insertEmployee&full_name=' + this.full_name + '&gender=' + this.gender
-                        + '&religion=' + this.religion + '&level=' + this.level + '&nik' + this.nik
-                        + '&address' + this.address + '&contract_start_date' + this.contract_start_date
-                        + '&mobile_phone' + this.mobile_phone + '&email_office' + this.email_office
-                        + '&email_personal' + this.email_personal;
+                handleData: function () {
+                    this.errors = [];
+                    if(this.act == 'add')
+                        var action = 'insertEmployee';
+                    else
+                        var action = 'editEmployee';
+                    
+                    let parameter = 'act='+action+'&full_name=' + this.full_name + '&gender=' + this.gender
+                        + '&religion=' + this.religion + '&level_id=' + this.level_id + '&nik=' + this.nik
+                        + '&address=' + this.address + '&contract_start_date=' + this.contract_start_date
+                        + '&mobile_phone=' + this.mobile_phone + '&email_office=' + this.email_office
+                        + '&email_personal=' + this.email_personal+ '&username=' + this.username
+                        + '&password=' + this.password+ '&xid=' + this.xid;
                     window.setTimeout(() => {
                         axios.get('../../server/ajax.php?' + parameter)
                             .then(response => this.employees = response.data,
-                            $('#myMaster').modal('hide'),
-                            swal({
-                                title: "Selamat!",
-                                text: "Data berhasil tersimpan!",
-                                icon: "success",
-                            }))
+                                $('#myMaster').modal('hide'),
+                                swal({
+                                    title: "Selamat!",
+                                    text: "Data berhasil tersimpan!",
+                                    icon: "success",
+                                }),
+                                this.full_name= '',
+                                this.username= '',
+                                this.password= '',
+                                this.gender= '',
+                                this.level_id= '',
+                                this.nik= '',
+                                this.address= '',
+                                this.contract_start_date= '',
+                                this.religion= '',
+                                this.mobile_phone= '',
+                                this.email_office= '',
+                                this.email_personal= '' 
+                            )
                             .catch(function (error) {
                                 // resultElement.innerHTML = generateErrorHTMLOutput(error);
                             });
