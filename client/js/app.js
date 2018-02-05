@@ -4,6 +4,8 @@ var app = new Vue({
       successMessage: "",
       errorMessage: "",
       logDetails: {username: '', password: ''},
+      app_name : "",
+      app_motto : "",
   },
   methods:{
     keymonitor: function(event) {
